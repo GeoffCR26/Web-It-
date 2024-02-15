@@ -4,7 +4,7 @@ require_once 'config.php';
 
 // Déterminer l'URL demandée
 $request_uri = $_SERVER['REQUEST_URI'];
-$request_uri = substr($request_uri, 5);
+$request_uri = substr($request_uri, 13);
 if (strlen($request_uri) > 1) $request_uri = rtrim($request_uri, '/');
 
 
