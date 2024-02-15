@@ -1,5 +1,5 @@
 RewriteEngine On
-RewriteBase /pinf/
+RewriteBase /Web-It-/pinf/
 
 # Rediriger toutes les requêtes vers index.php
 RewriteCond %{REQUEST_FILENAME} !-f
