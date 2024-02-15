@@ -29,9 +29,9 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `contacts` (
   `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
+  `nom` varchar(255) NOT NULL,
   `email` varchar(255) DEFAULT NULL,
-  `phone` varchar(20) DEFAULT NULL,
+  `numero` varchar(20) DEFAULT NULL,
   `role` varchar(50) DEFAULT NULL,
   `description` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -39,13 +39,13 @@ CREATE TABLE `contacts` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `gallery`
+-- Structure de la table `galerie`
 --
 
-CREATE TABLE `gallery` (
+CREATE TABLE `galerie` (
   `id` int(11) NOT NULL,
-  `team_id` int(11) DEFAULT NULL,
-  `year` int(11) DEFAULT NULL,
+  `equipe_id` int(11) DEFAULT NULL,
+  `annee` int(11) DEFAULT NULL,
   `photo_url` varchar(255) NOT NULL,
   `description` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -53,38 +53,37 @@ CREATE TABLE `gallery` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `matches`
+-- Structure de la table `matchs`
 --
 
-CREATE TABLE `matches` (
+CREATE TABLE `matchs` (
   `id` int(11) NOT NULL,
   `date` date NOT NULL,
-  `opponent` varchar(255) NOT NULL
+  `opposant` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `players`
+-- Structure de la table `joueurs`
 --
 
-CREATE TABLE `players` (
+CREATE TABLE `joueurs` (
   `id` int(11) NOT NULL,
-  `team_id` int(11) DEFAULT NULL,
-  `name` varchar(255) NOT NULL,
-  `position` varchar(50) DEFAULT NULL
+  `equipe_id` int(11) DEFAULT NULL,
+  `nom` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `shop_items`
+-- Structure de la table `boutique_objets`
 --
 
-CREATE TABLE `shop_items` (
+CREATE TABLE `boutique_objets` (
   `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `price` decimal(10,2) NOT NULL,
+  `nom` varchar(255) NOT NULL,
+  `prix` decimal(10,2) NOT NULL,
   `description` text DEFAULT NULL,
   `photo_url` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -92,12 +91,12 @@ CREATE TABLE `shop_items` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `teams`
+-- Structure de la table `equipes`
 --
 
-CREATE TABLE `teams` (
+CREATE TABLE `equipes` (
   `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
+  `nom` varchar(255) NOT NULL,
   `description` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -109,8 +108,8 @@ CREATE TABLE `teams` (
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
-  `username` varchar(50) NOT NULL,
-  `password` varchar(255) NOT NULL
+  `pseudo` varchar(50) NOT NULL,
+  `motdepasse` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -124,35 +123,35 @@ ALTER TABLE `contacts`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `gallery`
+-- Index pour la table `galerie`
 --
-ALTER TABLE `gallery`
+ALTER TABLE `galerie`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `team_id` (`team_id`);
+  ADD KEY `equipe_id` (`equipe_id`);
 
 --
--- Index pour la table `matches`
+-- Index pour la table `matchs`
 --
-ALTER TABLE `matches`
+ALTER TABLE `matchs`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `players`
+-- Index pour la table `joueurs`
 --
-ALTER TABLE `players`
+ALTER TABLE `joueurs`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `team_id` (`team_id`);
+  ADD KEY `equipe_id` (`equipe_id`);
 
 --
--- Index pour la table `shop_items`
+-- Index pour la table `boutique_objets`
 --
-ALTER TABLE `shop_items`
+ALTER TABLE `boutique_objets`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `teams`
+-- Index pour la table `equipes`
 --
-ALTER TABLE `teams`
+ALTER TABLE `equipes`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -172,33 +171,33 @@ ALTER TABLE `contacts`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table `gallery`
+-- AUTO_INCREMENT pour la table `galerie`
 --
-ALTER TABLE `gallery`
+ALTER TABLE `galerie`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table `matches`
+-- AUTO_INCREMENT pour la table `matchs`
 --
-ALTER TABLE `matches`
+ALTER TABLE `matchs`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table `players`
+-- AUTO_INCREMENT pour la table `joueurs`
 --
-ALTER TABLE `players`
+ALTER TABLE `joueurs`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table `shop_items`
+-- AUTO_INCREMENT pour la table `boutique_objets`
 --
-ALTER TABLE `shop_items`
+ALTER TABLE `boutique_objets`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table `teams`
+-- AUTO_INCREMENT pour la table `equipes`
 --
-ALTER TABLE `teams`
+ALTER TABLE `equipes`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -212,16 +211,16 @@ ALTER TABLE `users`
 --
 
 --
--- Contraintes pour la table `gallery`
+-- Contraintes pour la table `galerie`
 --
-ALTER TABLE `gallery`
-  ADD CONSTRAINT `gallery_ibfk_1` FOREIGN KEY (`team_id`) REFERENCES `teams` (`id`);
+ALTER TABLE `galerie`
+  ADD CONSTRAINT `galerie_ibfk_1` FOREIGN KEY (`equipe_id`) REFERENCES `equipes` (`id`);
 
 --
--- Contraintes pour la table `players`
+-- Contraintes pour la table `joueurs`
 --
-ALTER TABLE `players`
-  ADD CONSTRAINT `players_ibfk_1` FOREIGN KEY (`team_id`) REFERENCES `teams` (`id`);
+ALTER TABLE `joueurs`
+  ADD CONSTRAINT `joueurs_ibfk_1` FOREIGN KEY (`equipe_id`) REFERENCES `equipes` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
