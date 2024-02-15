@@ -1,6 +1,5 @@
 <?php
 
-namespace App\Controleurs;
 
 class EquipesControleur
 {
@@ -8,7 +7,7 @@ class EquipesControleur
     {
         // Code pour afficher la liste des équipes
 
-        return "Bienvenue sur la page des équipes";
+        include_once 'views/equipes.php';
     }
 
     public function show($id)

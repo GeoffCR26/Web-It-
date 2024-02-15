@@ -1,6 +1,5 @@
 <?php
 
-namespace App\Controleurs;
 
 class GalerieControleur
 {
@@ -8,7 +7,7 @@ class GalerieControleur
     {
         // Code de la méthode index
 
-        return "Bienvenue sur la page de la galerie";
+        include_once 'views/galerie.php';
     }
 
     public function show($id)

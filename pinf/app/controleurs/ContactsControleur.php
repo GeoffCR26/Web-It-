@@ -1,6 +1,5 @@
 <?php
 
-namespace App\Controleurs;
 
 class ContactsControleur
 {
@@ -8,7 +7,7 @@ class ContactsControleur
     {
         // Code de la méthode index du contrôleur ContactController
 
-        return "Bienvenue sur la page de contact";
+        include_once 'views/contacts.php';
     }
 
     // public function store()

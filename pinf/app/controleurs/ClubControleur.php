@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controleurs;
+
 
 class ClubControleur
 {
@@ -8,7 +8,8 @@ class ClubControleur
     {
         // Code de la méthode index
 
-        return "Bienvenue sur la page du club";
+        include_once 'views/club.php';
+
     }
 
     public function create()

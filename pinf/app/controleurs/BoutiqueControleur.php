@@ -1,6 +1,6 @@
 <?php
 
-class EquipesControleur
+class BoutiqueControleur
 {
     public function index()
     {
